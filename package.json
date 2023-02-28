@@ -12,8 +12,5 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.31.1"
-  },
-  "dependencies": {
-    "bottlejs": "^2.0.1"
   }
 }
