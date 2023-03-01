@@ -1,24 +1,24 @@
 import { expect, test } from "@playwright/test";
-import { PageFactory } from "./../services/pageFactory";
+import { PageFactory } from "./../../services/pageFactory";
 
 test.describe("Login cases", () => {
     let pageFactory: PageFactory
     let loginPage: any
-    let homePage: any
+    let inventoryPage: any
 
     test.beforeEach(async ({ page }) => {
         pageFactory = new PageFactory(page);
         loginPage = pageFactory.loginPage;
-        homePage = pageFactory.homePage;
+        inventoryPage = pageFactory.inventoryPage;
         await loginPage.goTo();
     });
 
-    test("Login with valid credentials", async ({ page }) => {
+    test("Login with valid credentials", async () => {
         await loginPage.verifyLoginPage();
 
         await loginPage.login("standard_user", "secret_sauce");
 
-        await expect(homePage.btnCart).toBeVisible();
+        await expect(inventoryPage.btnCart).toBeVisible();
     });
 
     test("Fill only username.", async () => {

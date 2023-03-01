@@ -14,14 +14,14 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.txtTitle = page.locator(".login_logo");
-        this.txtUsername = page.getByTestId("username");
-        this.txtPassword = page.getByTestId("password");
-        this.btnLogin = page.getByTestId("login-button");
-        this.txtCredentialsList = page.locator("#login_credentials");
-        this.txtErrorCredentials = page.getByTestId("error");
-        this.imgUsernameErrorIcon = page.locator("[data-test='username'] + .error_icon")
-        this.imgPasswordErrorIcon = page.locator("[data-test='password'] + .error_icon")
+        this.txtTitle = this.page.locator(".login_logo");
+        this.txtUsername = this.page.getByTestId("username");
+        this.txtPassword = this.page.getByTestId("password");
+        this.btnLogin = this.page.getByTestId("login-button");
+        this.txtCredentialsList = this.page.locator("#login_credentials");
+        this.txtErrorCredentials = this.page.getByTestId("error");
+        this.imgUsernameErrorIcon = this.page.locator("[data-test='username'] + .error_icon")
+        this.imgPasswordErrorIcon = this.page.locator("[data-test='password'] + .error_icon")
         this.btnClearError = this.txtErrorCredentials.locator(".error-button");
     }
 
