@@ -52,6 +52,8 @@ export class InventoryPage {
         return (await this.inventoryItemEntry(productName)).locator(".inventory_item_name");
     }
 
+    // Verifications section
+
     async verifyInventoryItem({ productName, productPrice, productDescription }) {
         await expect(await this.btnGetToCart(productName)).toBeVisible();
         await expect(await this.btnGetToCart(productName)).toHaveText("Add to cart");

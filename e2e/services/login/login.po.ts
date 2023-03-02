@@ -44,6 +44,8 @@ export class LoginPage {
         await this.btnLogin.click();
     }
 
+    // Verification section
+
     /**
      * Perform login by filling login and password and pressing login button.
      * @param username - Value to set in username field.

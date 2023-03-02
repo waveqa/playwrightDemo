@@ -16,6 +16,10 @@ export class CartPage {
         this.cartItemContainer = this.page.locator(this.locCartItem)
     }
 
+    async clickCheckout() {
+        await this.btnCheckout.click();
+    }
+
     async cartItemEntry(productName: string) {
         return await this.page.locator(this.locCartItem, { hasText: productName });
     }
@@ -27,7 +31,7 @@ export class CartPage {
     async txtInventoryName(productName: string) {
         return (await this.cartItemEntry(productName)).locator(".inventory_item_name");
     }
-    
+
     async txtInventoryDescription(productName: string) {
         return (await this.cartItemEntry(productName)).locator(".inventory_item_desc");
     }
