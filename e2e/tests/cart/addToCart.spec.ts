@@ -8,7 +8,7 @@ import { PageFactory } from "../../services/pageFactory";
 import { CheckoutCompletePage } from "../../services/checkout/checkoutComplete.po";
 
 
-test.describe.only("Add to cart.", () => {
+test.describe("Add to cart.", () => {
     let pageFactory: PageFactory
     let loginPage: LoginPage
     let inventoryPage: InventoryPage
