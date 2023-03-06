@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { PageFactory } from "./../../services/pageFactory";
+import * as creds from "./../../../e2e/data/credentials.json";
 
 test.describe("Login cases", () => {
     let pageFactory: PageFactory
@@ -15,8 +16,8 @@ test.describe("Login cases", () => {
 
     test("Login with valid credentials", async () => {
         await loginPage.verifyLoginPage();
-
-        await loginPage.login("standard_user", "secret_sauce");
+        
+        await loginPage.login(creds[process.env.USER].username, creds.firstUser.password);
 
         await expect(inventoryPage.btnCart).toBeVisible();
     });

@@ -6,6 +6,7 @@ import { InventoryPage } from "../../services/inventory/inventory.po";
 import { LoginPage } from "../../services/login/login.po";
 import { PageFactory } from "../../services/pageFactory";
 import { CheckoutCompletePage } from "../../services/checkout/checkoutComplete.po";
+import * as creds from "./../../../e2e/data/credentials.json";
 
 
 test.describe("Add to cart.", () => {
@@ -36,7 +37,7 @@ test.describe("Add to cart.", () => {
     test("Buy product.", async ({ page }) => {
 
         await test.step("should login to the store.", async () => {
-            await loginPage.login("standard_user", "secret_sauce");
+            await loginPage.login(creds.firstUser.username, creds.firstUser.password);
         });
 
         await test.step(`should see ${inventoryData.productName}.`, async () => {
