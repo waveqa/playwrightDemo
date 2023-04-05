@@ -91,7 +91,7 @@ test.describe("Add to cart.", () => {
 
             await checkoutPage.verifyCartInfo(cartData);
             await checkoutPage.verifyInventoryPresence(productData)
-            await expect(await checkoutPage.eleCartItem.count()).toEqual(1);
+            await expect.soft(await checkoutPage.eleCartItem.count()).toEqual(1);
         });
 
         await test.step("should click finish and see checkout complete.", async () => {

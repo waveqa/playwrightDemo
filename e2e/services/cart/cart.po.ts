@@ -45,7 +45,7 @@ export class CartPage {
     }
 
     async verifyInventoryPresence({ productName, productPrice, productDescription, productQuantity }) {
-        await expect(await this.btnInventoryRemove(productName)).toBeVisible();
+        await expect(await this.btnInventoryRemove(productName), "Remove product button is absent").toBeVisible();
         await expect(await this.btnInventoryRemove(productName)).toHaveText("Remove");
         await expect(await this.txtInventoryPrice(productName)).toHaveText(productPrice);
         await expect(await this.txtInventoryDescription(productName)).toHaveText(productDescription);
