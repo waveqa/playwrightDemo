@@ -1,21 +1,8 @@
-import { expect, test } from "@playwright/test";
 import { faker } from '@faker-js/faker';
-import { CartPage } from "../../services/cart/cart.po";
-import { CheckoutPage } from "../../services/checkout/checkout.po";
-import { InventoryPage } from "../../services/inventory/inventory.po";
-import { LoginPage } from "../../services/login/login.po";
-import { PageFactory } from "../../services/pageFactory";
-import { CheckoutCompletePage } from "../../services/checkout/checkoutComplete.po";
-import * as creds from "./../../../e2e/data/credentials.json";
+import { expect, test } from "./../../../fixtures/common";
 
 
 test.describe("Add to cart.", () => {
-    let pageFactory: PageFactory
-    let loginPage: LoginPage
-    let inventoryPage: InventoryPage
-    let cartPage: CartPage
-    let checkoutPage: CheckoutPage
-    let checkoutCompletePage: CheckoutCompletePage
 
     const inventoryData = {
         productName: "Sauce Labs Backpack",
@@ -24,21 +11,12 @@ test.describe("Add to cart.", () => {
             "melds uncompromising style with unequaled laptop and tablet protection."
     }
 
-    test.beforeEach(async ({ page }) => {
-        pageFactory = new PageFactory(page);
-        loginPage = pageFactory.loginPage;
-        inventoryPage = pageFactory.inventoryPage;
-        cartPage = pageFactory.cartPage;
-        checkoutPage = pageFactory.checkoutPage;
-        checkoutCompletePage = pageFactory.checkoutCompletePage;
-        await loginPage.goTo();
-    });
-
-    test("Buy product.", async ({ page }) => {
-
-        await test.step("should login to the store.", async () => {
-            await loginPage.login(creds.firstUser.username, creds.firstUser.password);
-        });
+    test("Buy product.", async ({ page, loginPage, pageFactory }) => {
+        
+        let inventoryPage = pageFactory.inventoryPage;
+        let cartPage = pageFactory.cartPage;
+        let checkoutPage = pageFactory.checkoutPage;
+        let checkoutCompletePage = pageFactory.checkoutCompletePage;
 
         await test.step(`should see ${inventoryData.productName}.`, async () => {
             await inventoryPage.verifyInventoryItem(inventoryData);
